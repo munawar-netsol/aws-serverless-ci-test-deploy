@@ -1,0 +1,81 @@
+#jest --setupFiles ./jest/setEnvVars
+
+service: serverless-offline-unit-test
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+  profile: serverlessUser
+  region: us-east-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:*
+        - s3:*
+      Resource: '*'
+  environment:
+    tableName: ${self:custom.tableName}
+    bucketName: ${self:custom.tableName}
+
+
+plugins:
+  - serverless-offline
+  - serverless-dynamodb-local  
+  - serverless-webpack
+  - serverless-plugin-scripts
+
+custom:
+  tableName: player-point
+  dynamodb:
+    stages:
+      - dev
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
+    migration:
+      dir: offline/migrations/todos.json
+  scripts:
+    hooks:
+      'aws:common:validate:validate' : jest --setupFiles ./jest/setEnvVars  # When AWS is validate cloudformation template, run validate scripts.
+
+functions:
+  hello:
+    handler: handler.hello
+  getPlayerScore:
+    handler: src/getPlayerScore.handler
+    events: # For configuring API 
+      - http:
+          path: get-player-score/{ID} # ID will be passed to lambda in "pathParameters"
+          method: get
+          cors: true # To hit API from a webpage.
+
+  createPlayerScore:
+    handler: src/createPlayerScore.handler
+    events: # For configuring API 
+      - http:
+          path: put-player-score/{ID} # ID will be passed to lambda in "pathParameters" and New User in Body 
+          method: post
+          cors: true # To hit API from a webpage.
+
+resources:
+  Resources:
+    DemoBucketUpload:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: myserverlessbucketupload
+    MyDynamoDBTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.tableName}
+        AttributeDefinitions:
+          - AttributeName: ID
+            AttributeType: S
+        KeySchema:
+          - AttributeName: ID
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5

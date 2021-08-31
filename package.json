@@ -1,0 +1,30 @@
+{
+  "name": "serverless-offline-unit-test",
+  "version": "1.0.0",
+  "main": "handler.js",
+  "dependencies": {
+    "aws-sdk": "^2.978.0",
+    "serverless-webpack": "^5.5.2",
+    "webpack": "^5.51.1"
+  },
+  "devDependencies": {
+    "@shelf/jest-dynamodb": "^2.1.0",
+    "jest": "^27.1.0",
+    "jest-dynalite": "^3.4.1",
+    "serverless-dynamodb-local": "^0.2.40",
+    "serverless-offline": "^8.0.0",
+    "serverless-plugin-scripts": "^1.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "jest": {
+    "setupFiles": [
+      "jest/setEnvVars.js"
+    ]
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "description": ""
+}
