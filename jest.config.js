@@ -1,4 +1,5 @@
 module.exports = {
     verbose: true,
-    preset: "jest-dynalite"
+    preset: '@shelf/jest-dynamodb'
+    //preset: "jest-dynalite"
 }
