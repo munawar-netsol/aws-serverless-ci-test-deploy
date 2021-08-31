@@ -37,7 +37,10 @@ custom:
       migrate: true
     migration:
       dir: offline/migrations/todos.json
-  
+  scripts:
+    hooks:
+      'aws:common:validate:validate' : jest  # When AWS is validate cloudformation template, run validate scripts.
+
 functions:
   hello:
     handler: handler.hello

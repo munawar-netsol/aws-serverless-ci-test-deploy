@@ -10,6 +10,8 @@ jobs:
             - run:
                   command: sudo npm i -g serverless npm@latest
             - run:
+                  command: sudo npm i -g jest
+            - run:
                   command: npm install
             - run:
                   command: chmod +x ./.circleci/install-credentials.sh
