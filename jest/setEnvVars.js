@@ -1,1 +1,1 @@
-process.env.tableName = 'player-point';
+process.env.tableName = 'player-point-circleci';

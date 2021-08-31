@@ -1,6 +1,6 @@
 const Dynamo = require('./Dynamo');
 
-const validTableName = 'player-point';
+const validTableName = 'player-point-circleci';
 const data = { ID: '123', score: 25, name: 'Chirs'};
 test('Dynamo Write Test', async() => {
     try {

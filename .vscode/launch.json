@@ -13,7 +13,7 @@
             "protocol": "inspector",
             "runtimeExecutable": "node",
             "env" : {
-                "tableName": "player-point"
+                "tableName": "player-point-circleci"
             }
         }
     ]

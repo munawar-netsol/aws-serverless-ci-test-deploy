@@ -1,6 +1,6 @@
 {
     "Table": {
-        "TableName": "player-point",
+        "TableName": "player-point-circleci",
         "KeySchema": [
             {
                 "AttributeName": "ID",
