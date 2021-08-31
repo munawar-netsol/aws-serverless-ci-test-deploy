@@ -6,7 +6,9 @@
     "aws-sdk": "^2.978.0",
     "serverless-webpack": "^5.5.2",
     "serverless-jest-plugin": "^0.3.0",
-    "webpack": "^5.51.1",
+    "webpack": "^5.51.1"
+  },
+  "devDependencies": {
     "@aws-sdk/client-dynamodb": "^3.28.0",
     "@shelf/jest-dynamodb": "^2.1.0",
     "jest": "^27.1.0",
