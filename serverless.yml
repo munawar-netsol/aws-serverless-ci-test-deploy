@@ -27,7 +27,7 @@ plugins:
   - serverless-plugin-scripts
 
 custom:
-  tableName: player-point
+  tableName: player-point-circleci
   dynamodb:
     stages:
       - dev
@@ -45,7 +45,7 @@ functions:
     handler: src/getPlayerScore.handler
     events: # For configuring API 
       - http:
-          path: get-player-score/{ID} # ID will be passed to lambda in "pathParameters"
+          path: get-player-score-circleci/{ID} # ID will be passed to lambda in "pathParameters"
           method: get
           cors: true # To hit API from a webpage.
 
@@ -53,7 +53,7 @@ functions:
     handler: src/createPlayerScore.handler
     events: # For configuring API 
       - http:
-          path: put-player-score/{ID} # ID will be passed to lambda in "pathParameters" and New User in Body 
+          path: put-player-score-circleci/{ID} # ID will be passed to lambda in "pathParameters" and New User in Body 
           method: post
           cors: true # To hit API from a webpage.
 
@@ -62,7 +62,7 @@ resources:
     DemoBucketUpload:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: myserverlessbucketupload
+        BucketName: myserverlessbucketupload-circleci
     MyDynamoDBTable:
       Type: AWS::DynamoDB::Table
       Properties:
