@@ -18,7 +18,7 @@ jobs:
             - run:
                   command: ./.circleci/install-credentials.sh
             - run:
-                  command: jest
+                  command: jest --setupFiles ./jest/setEnvVars
 
 workflows:
     build-and-deploy:
