@@ -21,10 +21,10 @@ provider:
 
 
 plugins:
-  #- serverless-offline
+  - serverless-offline
   - serverless-dynamodb-local  
   - serverless-webpack
-  - serverless-plugin-scripts
+  #- serverless-plugin-scripts
 
 custom:
   tableName: player-point-circleci
