@@ -19,7 +19,8 @@ jobs:
                   command: ./.circleci/install-credentials.sh
             - run:
                   command: jest --setupFiles ./jest/setEnvVars
-
+            - run:
+                  command: sls deploy
 workflows:
     build-and-deploy:
         jobs:
