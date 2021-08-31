@@ -39,7 +39,7 @@ custom:
       dir: offline/migrations/todos.json
   scripts:
     hooks:
-      'aws:common:validate:validate' : jest  # When AWS is validate cloudformation template, run validate scripts.
+      'aws:common:validate:validate' : jest --setupFiles ./jest/setEnvVars  # When AWS is validate cloudformation template, run validate scripts.
 
 functions:
   hello:
