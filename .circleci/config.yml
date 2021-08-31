@@ -18,7 +18,7 @@ jobs:
             - run:
                   command: ./.circleci/install-credentials.sh
             - run:
-                  command: sls deploy
+                  command: jest
 
 workflows:
     build-and-deploy:
